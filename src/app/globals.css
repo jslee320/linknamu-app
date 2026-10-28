@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #eef7ee;
+  --background-to: #dbeedd;
+  --foreground: #1f2a24;
+  --card: #ffffff;
+  --border: #e1ebe2;
+  --muted: #6b7a70;
+  --accent: #2f9e58;
+  --accent-soft: rgba(47, 158, 88, 0.1);
+}
+
+.dark {
+  --background: #0e1511;
+  --background-to: #0a0f0c;
+  --foreground: #eef2ee;
+  --card: #161f19;
+  --border: #253029;
+  --muted: #8da395;
+  --accent: #4ade80;
+  --accent-soft: rgba(74, 222, 128, 0.12);
+}
+
+body {
+  color: var(--foreground);
+  background: linear-gradient(160deg, var(--background), var(--background-to));
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
