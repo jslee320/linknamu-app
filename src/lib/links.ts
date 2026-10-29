@@ -14,7 +14,8 @@ export type LinkWithClicks = LinkItem & { clicks: number };
 // clicks are the only thing persisted in MongoDB.
 export const PROFILE = {
   name: "이지수",
-  bio: "세계 최강 바이브코더",
+  bio: "바이브코딩, 클로드코드 학습자",
+  imageUrl: "/images/jisu-hiking.png",
 };
 
 export const LINKS: LinkItem[] = [
@@ -22,21 +23,21 @@ export const LINKS: LinkItem[] = [
     id: "github",
     title: "GitHub",
     desc: "프로젝트와 코드를 구경해보세요",
-    url: "https://github.com",
+    url: "https://github.com/jslee320",
     icon: "github",
   },
   {
-    id: "linkedin",
-    title: "LinkedIn",
-    desc: "커리어와 경력을 확인해보세요",
-    url: "https://linkedin.com",
-    icon: "linkedin",
+    id: "instagram",
+    title: "인스타그램",
+    desc: "일상과 소식을 공유합니다",
+    url: "https://instagram.com/js128415",
+    icon: "instagram",
   },
   {
-    id: "blog",
-    title: "블로그",
-    desc: "생각과 경험을 기록합니다",
-    url: "https://medium.com",
-    icon: "blog",
+    id: "email",
+    title: "이메일",
+    desc: "편하게 연락 주세요",
+    url: "mailto:jslee320@naver.com",
+    icon: "mail",
   },
 ];

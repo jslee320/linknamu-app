@@ -23,12 +23,12 @@ export default async function Home() {
   const links = await getLinksWithClicks();
 
   return (
-    <main className="flex min-h-screen justify-center px-5 pb-12 pt-[72px]">
+    <main className="flex min-h-screen justify-center px-6 pb-16 pt-20">
       <ThemeToggle />
-      <div className="w-full max-w-[440px]">
-        <ProfileCard name={PROFILE.name} bio={PROFILE.bio} />
+      <div className="w-full max-w-[420px]">
+        <ProfileCard name={PROFILE.name} bio={PROFILE.bio} imageUrl={PROFILE.imageUrl} />
         <LinkList links={links} />
-        <footer className="mt-8 text-center text-xs text-muted">
+        <footer className="mt-10 text-center text-xs tracking-wide text-muted">
           © 2026 링크나무
         </footer>
       </div>
