@@ -8,8 +8,6 @@ export type LinkItem = {
   icon: IconName;
 };
 
-export type LinkWithClicks = LinkItem & { clicks: number };
-
 // Profile + link metadata. In this prototype these are hardcoded;
 // clicks are the only thing persisted in MongoDB.
 export const PROFILE = {

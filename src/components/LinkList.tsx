@@ -1,13 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Icon } from "@/components/Icons";
-import type { LinkWithClicks } from "@/lib/links";
+import type { LinkItem } from "@/lib/links";
 
-export default function LinkList({ links }: { links: LinkWithClicks[] }) {
+export default function LinkList({ links }: { links: LinkItem[] }) {
   const [clicks, setClicks] = useState<Record<string, number>>(
-    Object.fromEntries(links.map((link) => [link.id, link.clicks]))
+    Object.fromEntries(links.map((link) => [link.id, 0]))
   );
+
+  useEffect(() => {
+    async function loadClicks() {
+      try {
+        const res = await fetch("/api/clicks");
+        if (!res.ok) return;
+        const data: Record<string, number> = await res.json();
+        setClicks((prev) => ({ ...prev, ...data }));
+      } catch {
+        // Best-effort: counts just stay at 0 if this fails.
+      }
+    }
+    loadClicks();
+  }, []);
 
   async function handleClick(id: string) {
     setClicks((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
@@ -42,7 +56,7 @@ export default function LinkList({ links }: { links: LinkWithClicks[] }) {
             <p className="truncate text-[12.5px] text-muted">{link.desc}</p>
           </span>
           <span className="flex-none whitespace-nowrap rounded-full bg-accent-soft px-2.5 py-1 text-[11.5px] text-muted">
-            클릭 {clicks[link.id] ?? 0}
+            {clicks[link.id] ?? 0}회
           </span>
         </a>
       ))}

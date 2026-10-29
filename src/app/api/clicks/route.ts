@@ -1,8 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import { incrementClick } from "@/lib/clicks";
+import { getClicksMap, incrementClick } from "@/lib/clicks";
 import { LINKS } from "@/lib/links";
 
 const VALID_IDS = new Set(LINKS.map((link) => link.id));
+
+export async function GET() {
+  try {
+    const clicksMap = await getClicksMap();
+    return NextResponse.json(clicksMap);
+  } catch (error) {
+    console.error("Failed to load click counts:", error);
+    return NextResponse.json(
+      { error: "Failed to load click counts" },
+      { status: 500 }
+    );
+  }
+}
 
 export async function POST(request: NextRequest) {
   let body: unknown;
