@@ -13,7 +13,7 @@ export type LinkWithClicks = LinkItem & { clicks: number };
 // Profile + link metadata. In this prototype these are hardcoded;
 // clicks are the only thing persisted in MongoDB.
 export const PROFILE = {
-  name: "김클로",
+  name: "이지수",
   bio: "세계 최강 바이브코더",
 };
 
